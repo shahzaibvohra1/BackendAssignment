@@ -8,7 +8,6 @@ const getAll = async (req, res) => {
 
     try{
         let query = req.query
-        console.log(query)
         if(query.name)
         {
             result = await Product.find({name:query.name})
