@@ -1,0 +1,25 @@
+{
+  "name": "shahzaib",
+  "version": "1.0.0",
+  "description": "assignment",
+  "type":"module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "shahzaib",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "babel": "^6.23.0",
+    "dotenv": "^16.4.4",
+    "loader": "^2.1.1",
+    "nodemon": "^3.0.3"
+  }
+}
