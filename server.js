@@ -2,10 +2,6 @@ import app from './server/express.js';
 import mongoose from 'mongoose';
 import config from './config.js';
 
-//require('dotenv').config()
-
-//const mongoose = require('mongoose')
-
 
 mongoose.connect(config.mongoUri, { useNewUrlParser: true})
 

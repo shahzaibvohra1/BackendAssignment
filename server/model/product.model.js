@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 
+
+
 const productSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -17,8 +19,13 @@ const productSchema = new mongoose.Schema({
     },
     category:{
         type:String
-    }
-
+    },
+    
+    
 })
+
+
+
+
 
 export default mongoose.model('Products', productSchema)

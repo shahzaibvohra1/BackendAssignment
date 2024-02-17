@@ -1,34 +1,22 @@
 import express from 'express'
-//mport ProdCtrl from '../controller/product.controller.js';
+import ProdCtrl from '../controller/product.controller.js';
 
 const router = express.Router();
 
-router.get('/api/products',(req,res) => {
-    res.send("get executed");
-})
+router.route('/api/products')
 
-router.get('/api/products/:id', (req,res) => {
-    res.send("get id executed");
-})
+.get(ProdCtrl.getAll)
+.post(ProdCtrl.create)
+.delete(ProdCtrl.deleteAll)
 
-router.post('/api/products',(req,res) =>{
-    res.send("post executed");
-})
+router.param('Id', ProdCtrl.productById)
 
-router.put('/api/products/:id', (req,res) => {
-    res.send("put executed");
-})
+router.route('/api/products/:Id')
+.get(ProdCtrl.getbyId)
+.put(ProdCtrl.updateProduct)
+.delete(ProdCtrl.deletebyId)
 
-router.delete('/api/products/:id', (req,res) => {
-    res.send("deleted executed");
-})
-
-router.get('/api/products/published', (req,res) => {
-    res.send("get id executed");
-})
-
-router.get('/api/products?name=[kw]', (req,res) => {
-    res.send("get id executed");
-})
+router.get('/api/products?name=[kw]')
+.get(ProdCtrl.getByName)
 
 export default router
