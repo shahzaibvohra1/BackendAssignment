@@ -4,12 +4,21 @@ import Product from '../model/product.model.js'
 
 const getAll = async (req, res) => {
 
-    
+    let result
 
     try{
-        let result = await Product.find()
+        let query = req.query
+        console.log(query)
+        if(query.name)
+        {
+            result = await Product.find({name:query.name})
+        }
+        else{
+            result = await Product.find()
+        }
         
-        return res.status(200).json({result})
+        
+        return res.status(200).json(result)
     }
     catch(err)
     {
@@ -22,6 +31,7 @@ const getAll = async (req, res) => {
 const productById = async (req, res, next,id) => {
     let result
     try{
+        
         result = await Product.findById(id)
         
     }
@@ -42,10 +52,10 @@ const getbyId = async (req, res,next) => {
 }
 
 const create = async (req, res) => {
-    const user = new Product(req.body)
+    const product = new Product(req.body)
 
     try{
-        await user.save()
+        await product.save()
 
         return res.status(200).json({
             message: "Success fully added the product"
@@ -83,7 +93,7 @@ const updateProduct = async (req,res) => {
 const deletebyId = async (req, res) => {
     let Product = req.Product
     try{
-        Product = extend(Product, req.body)
+        
 
         let deletedProd = await Product.deleteOne()
 
@@ -95,11 +105,19 @@ const deletebyId = async (req, res) => {
 }
 
 const deleteAll = async (req,res) => {
+    try{
+        
+        let deletedProd = await Product.deleteMany()
 
+        res.status(200).json(deletedProd)
+    }
+    catch(err){
+        res.status(400).json(err.message)
+    }
 }
 
 const getByName = async (req,res) => {
-
+    res.json(req)
 }
 
  export default {getAll, create, getbyId, updateProduct, deleteAll, deletebyId,getByName,productById}

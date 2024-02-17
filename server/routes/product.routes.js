@@ -16,6 +16,7 @@ router.route('/api/products/:Id')
 .put(ProdCtrl.updateProduct)
 .delete(ProdCtrl.deletebyId)
 
+
 router.get('/api/products?name=[kw]')
 .get(ProdCtrl.getByName)
 
